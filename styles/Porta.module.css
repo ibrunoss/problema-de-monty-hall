@@ -13,6 +13,7 @@
   flex-grow: 1;
   width: 90%;
   border: 5px solid #a52a2a;
+  background-color: #00000044;
   border-bottom: none;
 }
 
