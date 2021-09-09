@@ -10,6 +10,7 @@
 
 .estrutura {
   display: flex;
+  flex-direction: column-reverse;
   flex-grow: 1;
   width: 90%;
   border: 5px solid #a52a2a;

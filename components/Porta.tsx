@@ -1,5 +1,7 @@
-import { MouseEvent, MouseEventHandler } from "react";
+import { MouseEvent } from "react";
+
 import PortaModel from "../model/PortaModel";
+import Presente from "./Presente";
 import styles from "../styles/Porta.module.css";
 
 interface PortaProps {
@@ -20,6 +22,8 @@ export default function Porta(props: PortaProps) {
 
   const selecaoPorta = () => quandoMudar(porta.alternarSelecao());
 
+  const renderizarPresente = () => (porta.temPresente ? <Presente /> : false);
+
   const renderizarPorta = () => (
     <div className={styles.porta}>
       <div className={styles.numero}>{porta.numero || 1}</div>
@@ -30,7 +34,7 @@ export default function Porta(props: PortaProps) {
   return (
     <div className={styles.area} onClick={selecaoPorta}>
       <div className={[styles.estrutura, classeSelecionada].join(" ")}>
-        {porta.aberta ? false : renderizarPorta()}
+        {porta.aberta ? renderizarPresente() : renderizarPorta()}
       </div>
       <div className={styles.chao} />
     </div>
