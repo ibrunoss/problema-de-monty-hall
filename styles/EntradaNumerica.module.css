@@ -32,3 +32,8 @@
   font-size: 3rem;
   margin: 5px;
 }
+
+.botao:hover {
+  cursor: pointer;
+  background-color: #00000020;
+}
