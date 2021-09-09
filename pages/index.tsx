@@ -1,13 +1,23 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Cartao from "../components/Cartao";
 import EntradaNumerica from "../components/EntradaNumerica";
 import styles from "../styles/formulario.module.css";
 
 export default function Formulario() {
+  const [invalido, setInvalido] = useState<boolean>(true);
   const [quantidadePortas, setQuantidadePortas] = useState(3);
   const [portaComPresente, setPortaComPresente] = useState(1);
+
+  useEffect(() => {
+    const quantidadeDePortasValida =
+      quantidadePortas >= 3 && quantidadePortas <= 100;
+    const portaPremiadaValida =
+      portaComPresente >= 1 && portaComPresente <= quantidadePortas;
+
+    setInvalido(!quantidadeDePortasValida || !portaPremiadaValida);
+  }, [quantidadePortas, portaComPresente]);
 
   const quandoMudar = (fn) => (novaQuantidade) => fn(novaQuantidade);
   return (
@@ -31,8 +41,10 @@ export default function Formulario() {
           />
         </Cartao>
         <Cartao bgColor="#28a085">
-          <Link href={`/jogo/${quantidadePortas}/${portaComPresente}`}>
-            <h2 className={styles.link}>Iniciar Jogo</h2>
+          <Link href={`/jogo/${quantidadePortas}/${portaComPresente}`} passHref>
+            <button className={styles.link} disabled={invalido}>
+              Iniciar Jogo
+            </button>
           </Link>
         </Cartao>
       </div>

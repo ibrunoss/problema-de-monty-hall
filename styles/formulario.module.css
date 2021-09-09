@@ -18,9 +18,24 @@
   width: 100%;
   text-align: center;
   margin: 0;
+  font-size: 4rem;
+  font-weight: 700;
+  color: #ffffff;
   cursor: pointer;
+  background-color: transparent;
+  border: none;
 }
 
 .link:hover {
   background-color: #00000011;
+}
+
+.link:disabled {
+  cursor: not-allowed;
+  color: #ffffff44;
+  font-weight: 500;
+}
+
+.link:disabled:hover {
+  background-color: initial;
 }
